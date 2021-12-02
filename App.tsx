@@ -1,9 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {Home} from './src/screens';
+import {Home} from './src/screens/index';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 
 const App = () => {
-  return <Home />;
+  const Stack = createNativeStackNavigator();
+  return (
+    <PaperProvider theme={DefaultTheme}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
+  );
 };
 
 export default App;
